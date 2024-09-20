@@ -12,12 +12,10 @@
         crossorigin="anonymous"></script>
     <title>{% block title %} Home {% endblock %}</title>
 </head>
-
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark post-f-t">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar">
@@ -30,6 +28,18 @@
         </div>
     </nav>
 
+    {% with messages == get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger alter-dismissable fade show" role="alert"></div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
     <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 
