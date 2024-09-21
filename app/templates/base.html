@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
     <title>{% block title %} Home {% endblock %}</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
@@ -28,11 +29,23 @@
         </div>
     </nav>
 
-    {% with messages == get_flashed_messages(with_categories=True) %}
+    {% with messages = get_flashed_messages(with_categories=True) %}
     {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-danger alter-dismissable fade show" role="alert"></div>
-        {% endfor %}
+    {% for category, message in messages %}
+    {% if category == 'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert"> {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert"> {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    {% endfor %}
     {% endif %}
     {% endwith %}
 
