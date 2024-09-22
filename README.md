@@ -15,5 +15,12 @@ Before starting, make sure you have the following installed:
 ## Installation
 
    ```bash
-   git clone https://github.com/your_username/flask-basic-app.git
-   cd flask-basic-app
+   https://github.com/leonardops23/NOTE_flask_db.git
+   cd NOTE_flask_db
+   ```
+
+## Run
+
+   ```bash
+   python3 manage.py
+   ```
